@@ -21,6 +21,16 @@
     <input type="text" name="q" placeholder="Search products..." class="form-control w-50 d-inline" value="{{ query }}">
     <button type="submit" class="btn btn-primary">Search</button>
 </form>
+<!-- Sorting Options -->
+<form method="GET" class="mb-4">
+    <label for="sort">Sort by:</label>
+    <select name="sort" id="sort" class="form-control w-25 d-inline">
+        <option value="">Default</option>
+        <option value="price_asc" {% if sort_by == 'price_asc' %}selected{% endif %}>Price (Low to High)</option>
+        <option value="price_desc" {% if sort_by == 'price_desc' %}selected{% endif %}>Price (High to Low)</option>
+    </select>
+    <button type="submit" class="btn btn-primary">Sort</button>
+</form>
 
 
     <div class="row">
