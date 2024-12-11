@@ -22,10 +22,10 @@
                     <td>${{ item.product.price }}</td>
                     <td>${{ item.quantity|floatformat:2 }}</td>
                     <td>
-                        <form method="POST" action="{% url 'remove_from_cart' item.id %}">
+                        <form method="POST" action="{% url 'cart:remove_from_cart' item.id %}">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-danger btn-sm">Remove</button>
-                        </form>
+                        </form>                        
                     </td>
                 </tr>
                 {% endfor %}

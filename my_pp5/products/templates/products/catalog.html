@@ -31,7 +31,6 @@
     </select>
     <button type="submit" class="btn btn-primary">Sort</button>
 </form>
-<a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary">Add to Cart</a>
 
 
     <div class="row">
@@ -46,6 +45,8 @@
                     <p class="card-text">{{ product.description }}</p>
                     <p class="card-text"><strong>${{ product.price }}</strong></p>
                 </div>
+                <a href="{% url 'cart:add_to_cart' product.id %}" class="btn btn-primary">Add to Cart</a>
+
             </div>
         </div>
         {% endfor %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Cart, CartItem
 from products.models import Product
+from django.http import HttpResponse
 
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, id=product_id)
@@ -16,7 +17,7 @@ def add_to_cart(request, product_id):
         # Increase quantity if the item already exists in the cart
         cart_item.quantity += 1
         cart_item.save()
-        
+
     return redirect('cart:cart_detail')
 
 def cart_detail(request):
@@ -26,6 +27,11 @@ def cart_detail(request):
     return render(request, 'cart/cart_detail.html', {'cart': cart, 'cart_items': cart_items})
     
 def remove_from_cart(request, item_id):
+    """View to remove an item from the cart."""
     cart_item = get_object_or_404(CartItem, id=item_id)
     cart_item.delete()
     return redirect('cart:cart_detail')
+
+def checkout(request):
+    """Placeholder view for the checkout process."""
+    return HttpResponse("Checkout page coming soon!")
