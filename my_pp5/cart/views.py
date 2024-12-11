@@ -8,6 +8,15 @@ def add_to_cart(request, product_id):
     cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
     cart_item.quantity += 1
     cart_item.save()
+
+    # Check if item is already in the cart
+    cart_item, created = CartItem.objects.get_or_create(cart=cart, product=product)
+
+    if not created:
+        # Increase quantity if the item already exists in the cart
+        cart_item.quantity += 1
+        cart_item.save()
+        
     return redirect('cart:cart_detail')
 
 def cart_detail(request):
