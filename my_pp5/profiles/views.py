@@ -24,4 +24,8 @@ def edit_profile(request):
         'user_form': user_form,
         'form': profile_form,
     }
-    return render(request, 'profiles/edit_profile.html', context)
+    return render(request, 'profiles/edit_profile.html', {
+    'user_form': user_form,
+    'profile_form': profile_form,
+})
+
