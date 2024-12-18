@@ -1,10 +1,71 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "base.html" %} {% block content %}
+<div class="container">
+  <h1 class="mt-4">Success</h1>
+  <p>Your order was placed successfully!</p>
 
-{% block content %}
-<div class="container text-center my-5">
-    <h1 class="text-success">Order Successful!</h1>
-    <p class="lead">Thank you for your purchase. Your order has been successfully placed.</p>
-    <a href="{% url 'home' %}" class="btn btn-primary mt-3">Return to Home</a>
+  {% if missing_profile_data %}
+  <div
+    class="modal fade"
+    id="saveProfileModal"
+    tabindex="-1"
+    aria-labelledby="saveProfileModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="saveProfileModalLabel">
+            Save Missing Profile Data
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p>
+            The following information is missing from your profile. Would you
+            like to save it?
+          </p>
+          <form method="POST" action="{% url 'profiles:save_profile_data' %}">
+            {% csrf_token %} {% for data in missing_profile_data %}
+            <div class="form-group">
+              <label for="{{ data.field }}"> {{ data.field|capfirst }} </label>
+              <input
+                type="text"
+                class="form-control"
+                id="{{ data.field }}"
+                name="{{ data.field }}"
+                value="{{ data.value }}"
+              />
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-success">
+              Save to Profile
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              No, Thanks
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var saveProfileModal = new bootstrap.Modal(
+        document.getElementById("saveProfileModal")
+      );
+      saveProfileModal.show();
+    });
+  </script>
+  {% else %}
+  <p>Your profile information is complete. Thank you for your order!</p>
+  {% endif %}
 </div>
-{% endblock %}

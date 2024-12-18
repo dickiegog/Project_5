@@ -6,4 +6,5 @@ app_name = 'checkout'
 urlpatterns = [
     path('', views.checkout, name='checkout'), 
     path('success/', views.success, name='success'), 
+    path('save_profile_data/', views.save_profile_data, name='save_profile_data'),
 ]

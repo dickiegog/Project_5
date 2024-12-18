@@ -1,12 +1,80 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <div class="container">
-    <h1 class="mt-4">Checkout</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Place Order</button>
-    </form>
+  <h1 class="mt-4">Checkout</h1>
+  <form method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Place Order</button>
+  </form>
 </div>
-{% endblock %}
+{% if save_profile %}
+<!-- Save Profile Modal -->
+<div
+  class="modal fade"
+  id="saveProfileModal"
+  tabindex="-1"
+  aria-labelledby="saveProfileModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="saveProfileModalLabel">
+          Save Information to Profile
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Would you like to save this information to your profile for future
+          orders?
+        </p>
+        <form method="POST" action="{% url 'profiles:save_profile' %}">
+          {% csrf_token %}
+          <input
+            type="hidden"
+            name="full_name"
+            value="{{ save_profile.full_name }}"
+          />
+          <input
+            type="hidden"
+            name="address"
+            value="{{ save_profile.address }}"
+          />
+          <input type="hidden" name="city" value="{{ save_profile.city }}" />
+          <input
+            type="hidden"
+            name="postal_code"
+            value="{{ save_profile.postal_code }}"
+          />
+          <input
+            type="hidden"
+            name="phone_number"
+            value="{{ save_profile.phone_number }}"
+          />
+          <button type="submit" class="btn btn-success">Save</button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            No, Thanks
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var saveProfileModal = new bootstrap.Modal(
+      document.getElementById("saveProfileModal")
+    );
+    saveProfileModal.show();
+  });
+</script>
+{% endif %} {% endblock %}
