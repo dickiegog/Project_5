@@ -14,10 +14,10 @@
                     <img src="{{ user.userprofile.profile_picture.url }}" class="img-fluid rounded-circle" alt="Profile Picture" style="max-width: 150px;">
                 {% else %}
                     <!-- Display fallback default image -->
-                    <img src="my_pp5/media/products/no_image.jpeg" class="img-fluid rounded-circle" alt="Default Profile Picture" style="max-width: 150px;">
+                    <img src="{% static 'images/no_image.jpeg' %}" class="img-fluid rounded-circle" alt="Default Profile Picture" style="max-width: 150px;">
                 {% endif %}
                 <h5 class="mt-3">{{ user.username }}</h5>
-            </div>
+            </div>            
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title">Personal Information</h5>
