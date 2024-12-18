@@ -8,6 +8,9 @@ class Order(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=20)
     address = models.TextField()
+    city = models.CharField(max_length=20)  
+    postal_code = models.CharField(max_length=20)
+    phone_number = models.CharField(max_length=15) 
     created_at = models.DateTimeField(auto_now_add=True)
     total = models.DecimalField(max_digits=10, decimal_places=2)
 
