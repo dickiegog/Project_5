@@ -1,11 +1,17 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+
+{% block content %}
 <div class="container">
   <h1 class="mt-4">Checkout</h1>
-  <form method="POST">
-    {% csrf_token %} {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Place Order</button>
+  <form id="checkout-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button id="submit-button" type="button" class="btn btn-primary">
+      Proceed to Payment
+    </button>
   </form>
 </div>
+
 {% if save_profile %}
 <!-- Save Profile Modal -->
 <div
@@ -77,4 +83,37 @@
     saveProfileModal.show();
   });
 </script>
-{% endif %} {% endblock %}
+{% endif %}
+{% endblock %}
+
+{% block postloadjs %}
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  document.getElementById("submit-button").addEventListener("click", async function () {
+    const stripe = Stripe("{{ stripe_public_key }}");
+
+    // Fetch session ID from the backend
+    const response = await fetch("{% url 'checkout:create_checkout_session' %}", {
+      method: "POST",
+      headers: {
+        "X-CSRFToken": "{{ csrf_token }}",
+        "Content-Type": "application/json",
+      },
+    });
+
+    const session = await response.json();
+
+    if (session.error) {
+      alert(session.error); // Handle backend errors
+      return;
+    }
+
+    // Redirect to Stripe Checkout
+    stripe.redirectToCheckout({ sessionId: session.id }).then(function (result) {
+      if (result.error) {
+        alert(result.error.message);
+      }
+    });
+  });
+</script>
+{% endblock %}
