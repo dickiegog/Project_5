@@ -4,3 +4,5 @@ django-allauth==65.3.0
 pillow==11.0.0
 pytz==2024.2
 sqlparse==0.5.2
+stripe==5.10.0
+
