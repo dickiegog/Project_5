@@ -30,30 +30,17 @@ def edit_profile(request):
     })
 2
 @login_required
-def save_profile(request):
-    """Save checkout data to the user's profile."""
+def save_profile_data(request):
+    """
+    Save missing profile data to the user's profile.
+    """
     if request.method == 'POST':
-        full_name = request.POST.get('full_name')
-        address = request.POST.get('address')
-        city = request.POST.get('city')
-        postal_code = request.POST.get('postal_code')
-        phone_number = request.POST.get('phone_number')
-
-        # Split full_name into first and last name
-        first_name, last_name = full_name.split(' ', 1) if ' ' in full_name else (full_name, '')
-
-        # Update User fields
-        request.user.first_name = first_name
-        request.user.last_name = last_name
-        request.user.save()
-
-        # Update UserProfile fields
-        profile, created = UserProfile.objects.get_or_create(user=request.user)
-        profile.address = address
-        profile.city = city
-        profile.postal_code = postal_code
-        profile.phone_number = phone_number
+        profile = request.user.userprofile  # Assumes a OneToOneField from User to UserProfile
+        for field, value in request.POST.items():
+            if hasattr(profile, field):
+                setattr(profile, field, value)
         profile.save()
-
-        messages.success(request, "Your information has been saved to your profile!")
-    return redirect('checkout:success')
+        # Add a success message if you want
+        return redirect('checkout:success')  # Redirect back to the success page
+    else:
+        return redirect('checkout:success') 

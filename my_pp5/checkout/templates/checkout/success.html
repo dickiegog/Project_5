@@ -29,25 +29,27 @@
             The following information is missing from your profile. Would you
             like to save it?
           </p>
+          <!-- Form to save the missing profile data -->
           <form method="POST" action="{% url 'profiles:save_profile_data' %}">
-            {% csrf_token %} {% for data in missing_profile_data %}
+            {% csrf_token %} 
+            {% for field, value in missing_profile_data.items %}
             <div class="form-group">
-              <label for="{{ data.field }}"> {{ data.field|capfirst }} </label>
+              <label for="{{ field }}">{{ field|capfirst }}</label>
               <input
                 type="text"
                 class="form-control"
-                id="{{ data.field }}"
-                name="{{ data.field }}"
-                value="{{ data.value }}"
+                id="{{ field }}"
+                name="{{ field }}"
+                value="{{ value }}"
               />
             </div>
             {% endfor %}
-            <button type="submit" class="btn btn-success">
+            <button type="submit" class="btn btn-success mt-3">
               Save to Profile
             </button>
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-secondary mt-3"
               data-bs-dismiss="modal"
             >
               No, Thanks
@@ -69,3 +71,4 @@
   <p>Your profile information is complete. Thank you for your order!</p>
   {% endif %}
 </div>
+{% endblock %}

@@ -6,6 +6,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from profiles.models import UserProfile
 from django.views.decorators.csrf import csrf_exempt
+import logging
+
+logger = logging.getLogger(__name__)
 
 @login_required
 def checkout(request):
@@ -69,23 +72,23 @@ def checkout(request):
 
 @login_required
 def success(request):
-    """Display order success message and optionally save profile data."""
-    save_profile_data = request.session.pop('save_profile_data', None)
-    missing_profile_data = []
+    """
+    Display the order success page and handle missing profile data.
+    """
+    # Fetch any missing profile data stored in the session
+    missing_profile_data = request.session.pop('missing_profile_data', {})
 
-    if save_profile_data:
-        for field, value in save_profile_data.items():
-            missing_profile_data.append({'field': field, 'value': value})
+    # Ensure the data is a dictionary to prevent template errors
+    if not isinstance(missing_profile_data, dict):
+        missing_profile_data = {}
 
+    # Render the template and pass missing profile data
     return render(request, 'checkout/success.html', {
-        'missing_profile_data': missing_profile_data,
+        'missing_profile_data': missing_profile_data
     })
-
-    return render(request, 'checkout/success.html')
-
-
+    
 @login_required
-def save_profile(request):
+def save_profile_data(request):
     """Save missing profile data from the checkout form."""
     if request.method == 'POST':
         profile, created = UserProfile.objects.get_or_create(user=request.user)
