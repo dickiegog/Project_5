@@ -1,0 +1,8 @@
+asgiref==3.8.1
+Django==5.1.4
+django-allauth==65.3.0
+pillow==11.0.0
+python-dotenv==1.0.1
+pytz==2024.2
+sqlparse==0.5.2
+stripe==11.4.0
