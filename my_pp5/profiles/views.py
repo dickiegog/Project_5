@@ -6,7 +6,7 @@ from django.contrib import messages
 
 @login_required
 def edit_profile(request):
-    """View to edit user profile."""
+    """Edit user and profile details."""
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
 
     if request.method == 'POST':
@@ -19,7 +19,7 @@ def edit_profile(request):
             messages.success(request, "Your profile has been updated successfully!")
             return redirect('profiles:edit_profile')
         else:
-            messages.error(request, "There was an error updating your profile. Please try again.")
+            messages.error(request, "Please correct the errors below.")
     else:
         user_form = UserUpdateForm(instance=request.user)
         profile_form = UserProfileForm(instance=user_profile)
@@ -28,19 +28,22 @@ def edit_profile(request):
         'user_form': user_form,
         'profile_form': profile_form,
     })
-2
+
 @login_required
 def save_profile_data(request):
-    """
-    Save missing profile data to the user's profile.
-    """
+    """Save missing profile data to the user's profile."""
     if request.method == 'POST':
-        profile = request.user.userprofile  # Assumes a OneToOneField from User to UserProfile
-        for field, value in request.POST.items():
-            if hasattr(profile, field):
+        profile, created = UserProfile.objects.get_or_create(user=request.user)
+
+        # Validate and update fields
+        valid_fields = ['address', 'city', 'postal_code', 'phone_number', 'country']
+        for field in valid_fields:
+            value = request.POST.get(field)
+            if value:
                 setattr(profile, field, value)
+
         profile.save()
-        # Add a success message if you want
-        return redirect('checkout:success')  # Redirect back to the success page
-    else:
-        return redirect('checkout:success') 
+        messages.success(request, "Your profile has been updated successfully!")
+        return redirect('profiles:edit_profile')
+
+    return redirect('profiles:edit_profile')
