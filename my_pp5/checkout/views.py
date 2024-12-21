@@ -15,7 +15,7 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 @login_required
 def checkout(request):
-    """Render the checkout page."""
+    """Render the checkout page and handle form submission."""
     cart_items = CartItem.objects.filter(cart__user=request.user)
     if not cart_items:
         messages.info(request, "Your cart is empty. Add items before checking out.")
@@ -30,9 +30,36 @@ def checkout(request):
         'city': profile.city,
         'postal_code': profile.postal_code,
         'phone_number': profile.phone_number,
+        'country': profile.country
     }
 
-    form = CheckoutForm(initial=initial_data)
+    if request.method == 'POST':
+        form = CheckoutForm(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.user = request.user
+            order.total = sum(item.product.price * item.quantity for item in cart_items)
+            order.save()
+
+            # Save order items
+            for item in cart_items:
+                OrderItem.objects.create(
+                    order=order,
+                    product=item.product,
+                    quantity=item.quantity,
+                    price=item.product.price,
+                )
+
+            # Clear the cart
+            cart_items.delete()
+
+            # Redirect to Stripe Checkout session
+            return redirect('checkout:create_checkout_session')
+        else:
+            messages.error(request, "There was an issue with your checkout form. Please try again.")
+    else:
+        form = CheckoutForm(initial=initial_data)
+
     return render(request, 'checkout/checkout.html', {
         'form': form,
         'cart_items': cart_items,
@@ -44,16 +71,17 @@ def success(request):
     """
     Display the order success page and handle missing profile data.
     """
-    # Fetch any missing profile data stored in the session
     missing_profile_data = request.session.pop('missing_profile_data', {})
 
-    # Ensure the data is a dictionary to prevent template errors
-    if not isinstance(missing_profile_data, dict):
-        missing_profile_data = {}
+    # Check if there are missing fields
+    missing_fields = [
+        field for field in ['address', 'city', 'postal_code', 'phone_number', 'country']
+        if field not in missing_profile_data
+    ]
 
-    # Render the template and pass missing profile data
     return render(request, 'checkout/success.html', {
-        'missing_profile_data': missing_profile_data
+        'missing_profile_data': missing_profile_data,
+        'missing_fields': missing_fields,
     })
 
 @login_required

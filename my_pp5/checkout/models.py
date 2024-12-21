@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from products.models import Product
+from django_countries.fields import CountryField
 
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -10,6 +11,7 @@ class Order(models.Model):
     address = models.TextField()
     city = models.CharField(max_length=20)  
     postal_code = models.CharField(max_length=20)
+    country = CountryField(blank_label="Country", default="IE")
     phone_number = models.CharField(max_length=15) 
     created_at = models.DateTimeField(auto_now_add=True)
     total = models.DecimalField(max_digits=10, decimal_places=2)
