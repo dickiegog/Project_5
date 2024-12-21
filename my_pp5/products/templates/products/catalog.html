@@ -16,22 +16,30 @@
         </select>
         <button type="submit" class="btn btn-primary">Filter</button>
     </form>
-    <!-- Search Bar -->
-<form method="GET" class="mb-4">
-    <input type="text" name="q" placeholder="Search products..." class="form-control w-50 d-inline" value="{{ query }}">
-    <button type="submit" class="btn btn-primary">Search</button>
-</form>
-<!-- Sorting Options -->
-<form method="GET" class="mb-4">
-    <label for="sort">Sort by:</label>
-    <select name="sort" id="sort" class="form-control w-25 d-inline">
-        <option value="">Default</option>
-        <option value="price_asc" {% if sort_by == 'price_asc' %}selected{% endif %}>Price (Low to High)</option>
-        <option value="price_desc" {% if sort_by == 'price_desc' %}selected{% endif %}>Price (High to Low)</option>
-    </select>
-    <button type="submit" class="btn btn-primary">Sort</button>
-</form>
 
+    <!-- Search Bar -->
+    <form method="GET" class="mb-4">
+        <input type="text" name="q" placeholder="Search products..." class="form-control w-50 d-inline" value="{{ query }}">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+    <!-- Sorting Options -->
+    <form method="GET" class="mb-4">
+        <label for="sort">Sort by:</label>
+        <select name="sort" id="sort" class="form-control w-25 d-inline">
+            <option value="">Default</option>
+            <option value="price_asc" {% if sort_by == 'price_asc' %}selected{% endif %}>Price (Low to High)</option>
+            <option value="price_desc" {% if sort_by == 'price_desc' %}selected{% endif %}>Price (High to Low)</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Sort</button>
+    </form>
+
+    <!-- Admin Controls -->
+    {% if user.is_superuser %}
+    <div class="mb-4">
+        <a href="{% url 'products:add_product' %}" class="btn btn-success">Add New Product</a>
+    </div>
+    {% endif %}
 
     <div class="row">
         {% for product in products %}
@@ -44,13 +52,17 @@
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="card-text">{{ product.description }}</p>
                     <p class="card-text"><strong>${{ product.price }}</strong></p>
+
+                    <!-- Admin Buttons -->
+                    {% if user.is_superuser %}
+                    <a href="{% url 'products:update_product' product.id %}" class="btn btn-warning">Edit</a>
+                    <a href="{% url 'products:delete_product' product.id %}" class="btn btn-danger">Delete</a>
+                    {% endif %}
                 </div>
                 <a href="{% url 'cart:add_to_cart' product.id %}" class="btn btn-primary">Add to Cart</a>
-
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
 {% endblock %}
-
