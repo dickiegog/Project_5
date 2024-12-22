@@ -65,3 +65,59 @@ body {
     justify-content: center;
     align-items: center;
 }
+/* Comments Section Styling */
+
+/* Media object for individual comments */
+.comment-media {
+    border: 1px solid #e0e0e0;
+    border-radius: 0.5rem;
+    background-color: #f9f9f9;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.comment-media:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px); /* Subtle lift on hover */
+}
+
+.comment-media img {
+    object-fit: cover;
+    border: 2px solid #007bff;
+}
+
+.comment-media h5 {
+    font-family: 'Roboto', sans-serif; /* Complementary font */
+    font-size: 1.2rem;
+}
+
+/* Comment Form */
+.comment-form {
+    border-radius: 0.5rem;
+    background: #f8f9fa; /* Light gray for a clean look */
+}
+
+.comment-form h2.card-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.comment-form input[type="text"],
+.comment-form textarea {
+    width: 100%; /* Fit within form */
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    box-shadow: none;
+}
+
+.comment-form textarea {
+    resize: none;
+    height: 100px; /* Fixed height for consistency */
+}
+
+.comment-form textarea:focus,
+.comment-form input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}

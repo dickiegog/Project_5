@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Homepage{% endblock %}
 
 {% block page_header %}
 <div class="jumbotron jumbotron-fluid text-white jumbotron-bg">
     <div class="container text-center">
-        <h1 class="display-4">Welcome to Fitnest</h1>
+        <h1 class="display-4 font-weight-bold">Welcome to Fitnest</h1>
         <p class="lead">Your go-to platform for fitness programs, health products, and a supportive community.</p>
         <a href="{% url 'products:product_catalog' %}" class="btn btn-primary btn-lg mt-3">Shop Now</a>
     </div>
@@ -16,40 +17,50 @@
 <div class="row">
     <!-- Left Column: Comments -->
     <div class="col-md-8">
-        <h2>User Feedback</h2>
+        <h2 class="mb-4 text-center text-primary font-weight-bold">User Feedback</h2>
         {% for comment in comments %}
-        <div class="card mb-3 shadow">
-            <div class="card-body">
-                <h5 class="card-title">
+        <div class="media border p-3 mb-3 shadow-sm rounded comment-media">
+            <img
+                src="{% static 'images/maxim-berg-vLfzJSGCU9c-unsplash.jpg' %}"
+                class="align-self-start mr-3 rounded-circle"
+                alt="User Avatar"
+                width="60"
+            >
+            <div class="media-body">
+                <h5 class="mt-0 text-dark">
                     {{ comment.user.username }} 
                     <small class="text-muted">on {{ comment.created_at|date:"F j, Y, g:i a" }}</small>
                 </h5>
-                <p class="card-text">Category: {{ comment.category.name }}</p>
+                <p class="mt-2"><strong>Category:</strong> {{ comment.category.name }}</p>
                 {% if comment.product %}
-                <p class="card-text">Product: <strong>{{ comment.product.name }}</strong></p>
+                <p><strong>Product:</strong> {{ comment.product.name }}</p>
                 {% endif %}
-                <p class="card-text">{{ comment.content }}</p>
+                <p>{{ comment.content }}</p>
             </div>
         </div>
         {% empty %}
-        <p>No feedback yet. Be the first to share your thoughts!</p>
+        <p class="text-muted text-center">No feedback yet. Be the first to share your thoughts!</p>
         {% endfor %}
     </div>
 
     <!-- Right Column: Comment Form -->
     <div class="col-md-4">
-        <h2>Leave a Comment</h2>
-        {% if user.is_authenticated %}
-        <form method="post" class="border p-3 bg-light shadow">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary btn-block">Submit</button>
-        </form>
-        {% else %}
-        <div class="alert alert-info" role="alert">
-            Please <a href="{% url 'account_login' %}" class="alert-link">log in</a> to leave a comment.
+        <div class="card shadow-sm comment-form">
+            <div class="card-body">
+                <h2 class="card-title text-center text-primary font-weight-bold">Leave a Comment</h2>
+                {% if user.is_authenticated %}
+                <form method="post" class="mt-3">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary btn-block mt-3">Submit</button>
+                </form>
+                {% else %}
+                <div class="alert alert-info text-center mt-3" role="alert">
+                    Please <a href="{% url 'account_login' %}" class="alert-link">log in</a> to leave a comment.
+                </div>
+                {% endif %}
+            </div>
         </div>
-        {% endif %}
     </div>
 </div>
 {% endblock %}
