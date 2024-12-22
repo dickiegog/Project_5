@@ -1,1 +1,1 @@
-web: gunicorn richards-pp5.wsgi:application
+web: gunicorn my_pp5.wsgi
