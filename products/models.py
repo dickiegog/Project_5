@@ -18,7 +18,7 @@ class Product(models.Model):
     friendly_name = models.CharField(max_length=200, blank=True, null=True)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='products/', default='my_pp5/media/products/no image.jpeg')
+    image = models.ImageField(upload_to='products/', default='my_PP5/media/products/no image.jpeg')
     sku = models.CharField(max_length=50, unique=True, blank=True, null=True)
     rating = models.DecimalField(max_digits=3, decimal_places=2, blank=True, null=True)
     image_url = models.URLField(blank=True, null=True) 
