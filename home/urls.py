@@ -10,4 +10,5 @@ sitemaps = {
 urlpatterns = [
     path("", views.index, name="home"),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+    path('delete-comment/<int:comment_id>/', views.delete_comment, name='delete_comment'),
 ]
