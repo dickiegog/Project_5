@@ -1,0 +1,67 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4; /* Off-white */
+    color: #2c3e50; /* Dark slate blue */
+}
+
+/* Header Background (base.html) */
+.header-bg {
+    background: url('static/images/bady-abbas-chrXKN7J8ic-unsplash.jpg') no-repeat center center/cover;
+    background-size: cover;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Improves text legibility */
+    padding: 4rem 0; /* Adjust padding for the header */
+}
+
+.jumbotron-bg {
+    background: url('/static/images/bady-abbas-chrXKN7J8ic-unsplash.jpg') no-repeat center center/cover;
+    background-size: cover; /* Ensures the image fills the container */
+    height: 300px; /* Adjust the height as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Improves text contrast */
+    position: relative;
+}
+
+.jumbotron .container {
+    background: rgba(0, 0, 0, 0.5); /* Adds a semi-transparent overlay */
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+/* Hero Section Carousel */
+.carousel-item img {
+    height: 200px; /* Adjust based on your design preference */
+    object-fit: cover; /* Ensures the image fills the carousel without distortion */
+}
+
+.carousel-caption h1, .carousel-caption p {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Improves text contrast */
+}
+
+/* Jumbotron Section */
+.jumbotron-card {
+    height: 400px; /* Adjust height */
+    overflow: hidden;
+}
+
+.jumbotron-card .card-img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.jumbotron-card .card-img-overlay {
+    background: rgba(209, 246, 242, 0.5); /* Adds transparency for readability */
+    color: white;
+}
+
+.main-header {
+    background: url('/static/images/jared-rice-NTyBbu66_SI-unsplash.jpg') no-repeat center center/cover;
+    background-size: cover;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Improves text legibility */
+    height: 300px; /* Adjust height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
