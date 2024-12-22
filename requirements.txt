@@ -10,3 +10,4 @@ python-dotenv==1.0.1
 pytz==2024.2
 sqlparse==0.5.2
 stripe==11.4.0
+whitenoise==6.8.2
