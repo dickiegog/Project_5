@@ -23,5 +23,5 @@ def delete_comment(request, comment_id):
     # Only allow admin users to delete
     if request.user.is_staff:
         comment.delete()
-        return redirect('index')  # Redirect to the homepage
+        return redirect('home')  # Redirect to the homepage
     return HttpResponseForbidden("You are not allowed to delete this comment.")
