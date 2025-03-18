@@ -17,6 +17,7 @@ load_dotenv()
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-b0sswm1sar4xj$+lnv%#q3jm^y8b=w@#(#(*69%68x*%&5n+ru'
 

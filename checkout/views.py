@@ -5,10 +5,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
+from django.urls import reverse
 from .forms import CheckoutForm
 from .models import Order, OrderItem
 from cart.models import CartItem
 from profiles.models import UserProfile
+
+print(f"DEBUG: Using Stripe Secret Key: {settings.STRIPE_SECRET_KEY}") 
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -54,7 +57,12 @@ def checkout(request):
             cart_items.delete()
 
             # Redirect to Stripe Checkout session
-            return redirect('checkout:create_checkout_session')
+            return render(request, 'checkout/checkout.html', {
+                'form': form,
+                'cart_items': cart_items,
+                'stripe_public_key': settings.STRIPE_PUBLIC_KEY,  # Pass Stripe public key
+            })
+
         else:
             messages.error(request, "There was an issue with your checkout form. Please try again.")
     else:
@@ -105,63 +113,35 @@ def save_profile_data(request):
 @csrf_exempt
 @login_required
 def create_checkout_session(request):
-    """Create a Stripe Checkout session."""
+    """Create a Stripe Checkout session dynamically."""
     try:
         cart_items = CartItem.objects.filter(cart__user=request.user)
         if not cart_items:
             return JsonResponse({'error': 'Your cart is empty!'}, status=400)
 
-        line_items = []
-        for item in cart_items:
-            line_items.append({
+        line_items = [
+            {
                 'price_data': {
                     'currency': 'usd',
-                    'product_data': {
-                        'name': item.product.name,
-                    },
+                    'product_data': {'name': item.product.name},
                     'unit_amount': int(item.product.price * 100),  # Stripe expects cents
                 },
                 'quantity': item.quantity,
-            })
+            }
+            for item in cart_items
+        ]
 
-        YOUR_DOMAIN = "http://8000-dickiegog-project5-ljqxmw7dt1f.ws-eu117.gitpod.io"
+        # Dynamically get your domain (important for deployment)
+        YOUR_DOMAIN = f"{request.scheme}://{request.get_host()}"
+        success_url = YOUR_DOMAIN + reverse('checkout:success')  # Use Django reverse
+        cancel_url = YOUR_DOMAIN + reverse('checkout:checkout')
+
         checkout_session = stripe.checkout.Session.create(
             payment_method_types=["card"],
             line_items=line_items,
             mode="payment",
-            success_url=f"{YOUR_DOMAIN}/checkout/success/",
-            cancel_url=f"{YOUR_DOMAIN}/checkout/",
-        )
-        return JsonResponse({"id": checkout_session.id})
-    except Exception as e:
-        return JsonResponse({"error": str(e)}, status=500)
-
-    """Create a Stripe Checkout session."""
-    try:
-        cart_items = CartItem.objects.filter(cart__user=request.user)
-        if not cart_items:
-            return JsonResponse({'error': 'Your cart is empty!'}, status=400)
-
-        line_items = []
-        for item in cart_items:
-            line_items.append({
-                'price_data': {
-                    'currency': 'usd',
-                    'product_data': {
-                        'name': item.product.name,
-                    },
-                    'unit_amount': int(item.product.price * 100),  # Price in cents
-                },
-                'quantity': item.quantity,
-            })
-
-        YOUR_DOMAIN = "http://8000-dickiegog-project5-ljqxmw7dt1f.ws-eu117.gitpod.io"
-        checkout_session = stripe.checkout.Session.create(
-            payment_method_types=["card"],
-            line_items=line_items,
-            mode="payment",
-            success_url=f"{YOUR_DOMAIN}/checkout/success/",
-            cancel_url=f"{YOUR_DOMAIN}/checkout/",
+            success_url=success_url,
+            cancel_url=cancel_url,
         )
         return JsonResponse({"id": checkout_session.id})
     except Exception as e:
