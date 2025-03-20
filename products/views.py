@@ -79,3 +79,8 @@ def product_catalog(request):
         'query': query,
         'sort_by': sort_by,
     })
+    
+def product_detail(request, product_id):
+    """Display a single product detail page."""
+    product = get_object_or_404(Product, id=product_id)
+    return render(request, "products/product_detail.html", {"product": product})

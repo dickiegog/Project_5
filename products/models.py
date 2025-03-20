@@ -1,4 +1,7 @@
 from django.db import models
+from django.urls import reverse
+from django.utils.timezone import now
+
 
 class Category(models.Model):
     name = models.CharField(max_length=200)
@@ -22,6 +25,11 @@ class Product(models.Model):
     sku = models.CharField(max_length=50, unique=True, blank=True, null=True)
     rating = models.DecimalField(max_digits=3, decimal_places=2, blank=True, null=True)
     image_url = models.URLField(blank=True, null=True) 
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        """Returns the absolute URL for the product"""
+        return reverse("products:product_detail", kwargs={"pk": self.pk})
