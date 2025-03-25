@@ -1,10 +1,14 @@
+import os
 from django.http import HttpResponse
+from django.conf import settings
 
 def sitemap_view(request):
-    """Serve the static sitemap.xml file."""
-    filepath = os.path.join(settings.BASE_DIR, 'static', 'sitemap.xml')
-    with open(filepath, 'rb') as f:
-        return HttpResponse(f.read(), content_type='application/xml')
+    sitemap_path = os.path.join(settings.BASE_DIR, 'my_PP5', 'templates', 'sitemap.xml')
 
-def home(request):
-    return HttpResponse("Hello, world! This is the home page.")
+    try:
+        with open(sitemap_path, 'r') as f:
+            xml_content = f.read()
+        return HttpResponse(xml_content, content_type='application/xml')
+    except FileNotFoundError:
+        return HttpResponse("Sitemap not found.", status=404)
+

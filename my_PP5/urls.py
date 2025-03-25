@@ -9,6 +9,7 @@ from products.models import Product
 from .views import sitemap_view
 from django.views.generic import TemplateView
 
+
 path('sitemap.xml', TemplateView.as_view(
     template_name='sitemap.xml',
     content_type='application/xml'
@@ -29,7 +30,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('cart/', include('cart.urls', namespace='cart')),
     path('checkout/', include('checkout.urls')),
-    path('sitemap.xml', sitemap, {'sitemaps': sitemaps_config}, name='sitemap'),
+    path('sitemap.xml', sitemap_view, name='sitemap'),
 ]
 
 
