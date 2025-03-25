@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/login/</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/signup/</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/products/</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/password/reset/</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/login/?next=/cart/add/3/</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/login/?next=/cart/add/4/</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/login/?next=/cart/add/7/</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/login/?next=/cart/add/8/</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/login/?next=/cart/add/5/</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/login/?next=/cart/add/6/</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/login/?next=/cart/add/1/</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/signup/?next=%2Fcart%2Fadd%2F3%2F</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/signup/?next=%2Fcart%2Fadd%2F4%2F</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/signup/?next=%2Fcart%2Fadd%2F7%2F</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/signup/?next=%2Fcart%2Fadd%2F8%2F</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/signup/?next=%2Fcart%2Fadd%2F5%2F</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/signup/?next=%2Fcart%2Fadd%2F6%2F</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/signup/?next=%2Fcart%2Fadd%2F1%2F</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/login/?next=%2Fcart%2Fadd%2F3%2F</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/login/?next=%2Fcart%2Fadd%2F4%2F</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/login/?next=%2Fcart%2Fadd%2F7%2F</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/login/?next=%2Fcart%2Fadd%2F8%2F</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/login/?next=%2Fcart%2Fadd%2F5%2F</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/login/?next=%2Fcart%2Fadd%2F6%2F</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+<url>
+  <loc>https://richards-pp5-8caee8658402.herokuapp.com/accounts/login/?next=%2Fcart%2Fadd%2F1%2F</loc>
+  <lastmod>2025-03-22T17:18:00+00:00</lastmod>
+  <priority>0.41</priority>
+</url>
+
+
+</urlset>

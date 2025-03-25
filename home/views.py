@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
+from django.http import HttpResponse
 from .models import Comment
 from .forms import CommentForm
 
@@ -25,3 +26,16 @@ def delete_comment(request, comment_id):
         comment.delete()
         return redirect('home')  # Redirect to the homepage
     return HttpResponseForbidden("You are not allowed to delete this comment.")
+
+def robots_txt(request):
+    lines = [
+        "User-agent: *",
+        "Disallow: /admin/",
+        "Disallow: /accounts/",
+        "Disallow: /profiles/",
+        "Disallow: /checkout/",
+        "Disallow: /cart/",
+        "Allow: /",
+        f"Sitemap: https://{request.get_host()}/sitemap.xml",
+    ]
+    return HttpResponse("\n".join(lines), content_type="text/plain")
