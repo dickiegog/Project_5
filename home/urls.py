@@ -7,6 +7,7 @@ from django.contrib.sitemaps.views import sitemap
 
 urlpatterns = [
     path("", views.index, name="home"),
+    path('newsletter-signup/', views.newsletter_signup, name='newsletter_signup'),
     path('delete-comment/<int:comment_id>/', views.delete_comment, name='delete_comment'),
 
  # Override login and signup to redirect logged-in users

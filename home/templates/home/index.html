@@ -69,5 +69,23 @@
             </div>
         </div>
     </div>
+
+    <!-- Newsletter Signup Section -->
+<div class="d-flex justify-content-end mt-5">
+    <div class="card shadow-sm" style="width: 350px;">
+      <div class="card-body">
+        <h5 class="card-title">Subscribe to Our Newsletter</h5>
+        <form method="POST" action="{% url 'newsletter_signup' %}">
+          {% csrf_token %}
+          <div class="form-group">
+            {{ newsletter_form.email.label_tag }}
+            {{ newsletter_form.email }}
+          </div>
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
 </div>
 {% endblock %}

@@ -1,6 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
-from products.models import Product, Category  # Update this path based on your app names
+from products.models import Product, Category  
+
+class NewsletterSignup(models.Model):
+    email = models.EmailField(unique=True)
+    signed_up_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
+
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)  # Links comment to a user
