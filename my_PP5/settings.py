@@ -22,7 +22,7 @@ STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 SECRET_KEY = 'django-insecure-b0sswm1sar4xj$+lnv%#q3jm^y8b=w@#(#(*69%68x*%&5n+ru'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = true
 
 ALLOWED_HOSTS = ['*']
 
@@ -116,7 +116,7 @@ MESSAGE_TAGS = {
     messages.WARNING: 'warning',
     messages.ERROR: 'danger',
 }
-
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
