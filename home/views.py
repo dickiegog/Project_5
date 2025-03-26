@@ -1,9 +1,25 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import user_passes_test
+from allauth.account.views import SignupView, LoginView
 from django.http import HttpResponseForbidden
 from django.http import HttpResponse
+from django.shortcuts import redirect
 from .models import Comment
 from .forms import CommentForm
+
+
+from django.shortcuts import redirect
+
+def redirect_authenticated_user(view_class):
+    class WrappedView(view_class):
+        def dispatch(self, request, *args, **kwargs):
+            if request.user.is_authenticated:
+                return redirect('home')
+            return super().dispatch(request, *args, **kwargs)
+
+    return WrappedView.as_view()
+
 
 def index(request):
     comments = Comment.objects.all().order_by('-created_at')  # Show comments in reverse chronological order
