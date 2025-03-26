@@ -3,7 +3,8 @@ from django.http import HttpResponse
 from django.conf import settings
 
 def sitemap_view(request):
-    sitemap_path = os.path.join(settings.BASE_DIR, 'my_PP5', 'templates', 'sitemap.xml')
+    sitemap_path = os.path.join(settings.BASE_DIR, 'templates', 'sitemap.xml')
+
 
     try:
         with open(sitemap_path, 'r') as f:
