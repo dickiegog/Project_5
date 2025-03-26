@@ -22,9 +22,9 @@ STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 SECRET_KEY = 'django-insecure-b0sswm1sar4xj$+lnv%#q3jm^y8b=w@#(#(*69%68x*%&5n+ru'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'richards-pp5-8caee8658402.herokuapp.com', '8000-dickiegog-project5-me0kiijp3x6.ws-eu118.gitpod.io']
+ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://8000-dickiegog-project5-me0kiijp3x6.ws-eu118.gitpod.io',
