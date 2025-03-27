@@ -6,7 +6,7 @@ body {
 
 /* Header Background (base.html) */
 .header-bg {
-    background: url('static/images/bady-abbas-chrXKN7J8ic-unsplash.jpg') no-repeat center center/cover;
+    background: url('/static/images/bady-abbas-chrXKN7J8ic-unsplash.jpg') no-repeat center center/cover;
     background-size: cover;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Improves text legibility */
     padding: 4rem 0; /* Adjust padding for the header */

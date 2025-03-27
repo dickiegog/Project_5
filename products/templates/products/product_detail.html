@@ -6,5 +6,8 @@
   <p><strong>Price:</strong> €{{ product.price }}</p>
   {% if product.image %}
     <img src="{{ product.image.url }}" loading="lazy" alt="{{ product.name }}" style="max-width: 300px;">
+  {% else %}
+    <img src="{% static 'images/no-image.jpeg' %}" loading="lazy" alt="No image available" style="max-width: 300px;">
   {% endif %}
+
 {% endblock %}

@@ -1,4 +1,6 @@
+
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
 <div class="container">
     <h1>Product Catalog</h1>
@@ -47,6 +49,8 @@
             <div class="card">
                 {% if product.image %}
                 <img src="{{ product.image.url }}" class="card-img-top" loading="lazy" alt="{{ product.name }}">
+                {% else %}
+                    <img src="{% static 'images/no-image.jpeg' %}" class="card-img-top" loading="lazy" alt="No image available">
                 {% endif %}
                 <div class="card-body">
                     <h5 class="card-title">{{ product.name }}</h5>
