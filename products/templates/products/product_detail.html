@@ -5,6 +5,6 @@
   <p><strong>Description:</strong> {{ product.description }}</p>
   <p><strong>Price:</strong> €{{ product.price }}</p>
   {% if product.image %}
-    <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width: 300px;">
+    <img src="{{ product.image.url }}" loading="lazy" alt="{{ product.name }}" style="max-width: 300px;">
   {% endif %}
 {% endblock %}

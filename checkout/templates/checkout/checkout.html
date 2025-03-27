@@ -86,7 +86,7 @@
   });
 </script>
 {% endif %} {% endblock %} {% block postloadjs %}
-<script src="https://js.stripe.com/v3/"></script>
+<script src="https://js.stripe.com/v3/" defer></script>
 <script>
   document.getElementById("submit-button").addEventListener("click", async function () {
     const stripe = Stripe("{{ stripe_public_key }}");

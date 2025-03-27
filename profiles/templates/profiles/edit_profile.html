@@ -11,6 +11,7 @@
         <img
           src="{{ user.userprofile.profile_picture.url }}"
           class="img-fluid rounded-circle"
+          loading="lazy"
           alt="Profile Picture"
           style="max-width: 150px"
         />
@@ -19,6 +20,7 @@
         <img
           src="{% static 'images/no_image.jpeg' %}"
           class="img-fluid rounded-circle"
+          loading="lazy"
           alt="Default Profile Picture"
           style="max-width: 150px"
         />
