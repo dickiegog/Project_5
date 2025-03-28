@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.timezone import now
+from cloudinary.models import CloudinaryField
 
 
 class Category(models.Model):
@@ -21,7 +22,7 @@ class Product(models.Model):
     friendly_name = models.CharField(max_length=200, blank=True, null=True)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='products/', blank=True, null=True)
+    image = CloudinaryField('image', default='', blank=True, null=True)
     sku = models.CharField(max_length=50, unique=True, blank=True, null=True)
     rating = models.DecimalField(max_digits=3, decimal_places=2, blank=True, null=True)
     image_url = models.URLField(blank=True, null=True) 
