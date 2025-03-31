@@ -136,26 +136,30 @@ It was created to support planning, testing, and assessment of the full-stack de
 - Lighthouse
 - W3C Validators
 
-## Testing
+# Testing
 
-### Automated Testing
-```python
-# Example test from tests.py
-class ProductTests(TestCase):
-    def setUp(self):
-        self.product = Product.objects.create(
-            name='Test Product',
-            price=9.99,
-            description='Test description'
-        )
+## Automated Testing
 
-    def test_product_creation(self):
-        self.assertEqual(self.product.name, 'Test Product')
-        self.assertEqual(self.product.price, 9.99)
-        
-        ## Test Coverage
+Unit tests were written in `tests.py` files across various apps to validate core logic.
 
-### Automated Test Coverage
+### Example Test here
+
+
+
+
+### Test Execution
+
+Tests were run using the following command:
+
+```bash
+python manage.py test
+```
+
+All 9 tests passed successfully.
+
+![Automated Tests](static/images/Automated%20testing.png)
+
+### Test Coverage Summary
 
 | Component | Coverage |
 |-----------|----------|
@@ -168,36 +172,58 @@ class ProductTests(TestCase):
 
 ## Manual Testing
 
-### Feature Testing
+### Feature-by-Feature Tests
 
-| Feature         | Test Case           | Result     |
-|----------------|---------------------|------------|
-| Registration    | New user signup     | ✅ Pass    |
-| Login           | Existing user login | ✅ Pass    |
-| Product Search  | Keyword matching    | ✅ Pass    |
-| Cart            | Add/remove items    | ✅ Pass    |
-| Checkout        | Complete purchase   | ✅ Pass    |
+| Feature         | Test Case           | Result  |
+|----------------|---------------------|---------|
+| Registration   | New user signup     | ✅ Pass |
+| Login          | Existing user login | ✅ Pass |
+| Product Search | Keyword matching    | ✅ Pass |
+| Cart           | Add/remove items    | ✅ Pass |
+| Checkout       | Complete purchase   | ✅ Pass |
 
 ---
 
-## Validation
+## Validation Testing
 
-### HTML Validation:
-- ✅ HTML Validation Results: Passed (No critical errors)
+### HTML Validation
 
-### CSS Validation:
-- ✅ CSS Validation Results: Passed (No errors)
+HTML was validated using [W3C Validator](https://validator.w3.org/). No critical issues were found.
 
-### JavaScript Testing:
-- ✅ JSHint validation passed
+![HTML Validation](static/images/HTML_Validation_p5.png)
+
+### CSS Validation
+
+CSS was validated using [W3C CSS Validator](https://jigsaw.w3.org/css-validator/). No errors were detected.
+
+![CSS Validation](static/images/Css_validation_p5.png)
+
+### JavaScript Testing
+
+- ✅ JSHint validation passed with no warnings or errors
 - ✅ No console errors
-- ✅ All interactive elements functional
+- ✅ All interactive buttons and forms behave as expected
 
 ---
 
-## Performance
+## Responsive Design
 
-### Lighthouse Results:
+The site was tested across the following screen sizes:
+
+- Mobile (iPhone SE, 12 Pro)
+- Tablet (iPad)
+- Laptop (MacBook Air)
+- Desktop (1080p monitor)
+
+The design adapted fluidly at each breakpoint.
+
+![Responsive Design](static/images/responsiveP5.png)
+
+---
+
+## Performance Testing
+
+Google Lighthouse was used to measure performance. The site scored well in all categories:
 
 ![Lighthouse Report](static/images/Fitnest-Lighthouse.png)
 
