@@ -145,3 +145,7 @@ body {
         padding: 0.5rem; /* Reduce padding for smaller screens */
     }
 }
+
+.country-select-flag {
+    display: none !important;
+}

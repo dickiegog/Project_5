@@ -5,15 +5,9 @@ body {
 }
 
 /* Header Background (base.html) */
-.header-bg {
-    background: url('/static/images/bady-abbas-chrXKN7J8ic-unsplash.jpg') no-repeat center center/cover;
-    background-size: cover;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Improves text legibility */
-    padding: 4rem 0; /* Adjust padding for the header */
-}
 
 .jumbotron-bg {
-    background: url('/static/images/bady-abbas-chrXKN7J8ic-unsplash.jpg') no-repeat center center/cover;
+    background: url('/static/images/bady-abbas.webp')  no-repeat center center/cover;
     background-size: cover; /* Ensures the image fills the container */
     height: 300px; /* Adjust the height as needed */
     display: flex;
@@ -82,7 +76,7 @@ body {
 
 .comment-media img {
     object-fit: cover;
-    border: 2px solid #007bff;
+    border: 2px solid #4ca1fb;
 }
 
 .comment-media h5 {
@@ -118,6 +112,40 @@ body {
 
 .comment-form textarea:focus,
 .comment-form input[type="text"]:focus {
-    border-color: #007bff;
+    border-color: #479af3;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+@media (max-width: 576px) {
+    .jumbotron-bg {
+        height: 200px; /* Further reduce height for very small screens */
+    }
+
+    .jumbotron .container h1 {
+        font-size: 1.5rem; /* Scale down heading size */
+    }
+
+    .jumbotron .container p {
+        font-size: 0.9rem; /* Scale down paragraph size */
+    }
+
+    .jumbotron .container a {
+        font-size: 0.85rem; /* Scale down button text */
+        padding: 0.5rem 1rem;
+    }
+    .carousel-caption h1 {
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
+    }
+
+    .carousel-caption p {
+        font-size: 1rem; /* Adjust paragraph font size */
+    }
+
+    .carousel-caption {
+        padding: 0.5rem; /* Reduce padding for smaller screens */
+    }
+}
+
+.country-select-flag {
+    display: none !important;
 }

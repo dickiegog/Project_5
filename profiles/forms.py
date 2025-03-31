@@ -1,6 +1,7 @@
 from django import forms
 from .models import UserProfile
 from django.contrib.auth.models import User 
+from django_countries.widgets import CountrySelectWidget
 from .models import UserProfile
 
 class UserUpdateForm(forms.ModelForm):
@@ -24,5 +25,5 @@ class UserProfileForm(forms.ModelForm):
             'city': forms.TextInput(attrs={'class': 'form-control'}),
             'postal_code': forms.TextInput(attrs={'class': 'form-control'}),
             'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
-            'country': forms.Select(attrs={'class': 'form-control'}),
+            'country': CountrySelectWidget(attrs={'class': 'form-control'}), 
         }
