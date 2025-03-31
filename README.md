@@ -9,6 +9,7 @@
 - [Project Goals](#project-goals)
 - [Project Intentions & Planning](#project-intentions-&-planning)
 - [User Stories](#user-stories)
+- [Agile Development & Wireframes](#agile-development)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Testing](#testing)
@@ -68,6 +69,33 @@ It was created to support planning, testing, and assessment of the full-stack de
 - Manage inventory
 - View all user comments
 - Process orders
+
+## Agile Development
+
+This project was developed using the Agile methodology, tracked via GitHub Projects.
+
+📋 [View the Agile Project Board](https://github.com/users/dickiegog/projects/9)
+
+---
+
+## Wireframes
+
+Initial planning included hand-drawn wireframes for the homepage and product page.
+
+### Home Page Wireframe
+
+<a href="static/images/home_page.jpg" target="_blank">
+  <img src="static/images/home_page.jpg" alt="Home Page Wireframe" width="400"/>
+</a>
+
+### Product Page Wireframe
+
+<a href="static/images/products_page.jpg" target="_blank">
+  <img src="static/images/products_page.jpg" alt="Product Page Wireframe" width="400"/>
+</a>
+
+> 💡 Right-click or Ctrl+Click any image to open in a new tab.
+
 
 ## Features
 
