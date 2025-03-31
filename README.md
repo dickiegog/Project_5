@@ -5,6 +5,7 @@
 ## Table of Contents
 - [Live Site](#live-site)
 - [Project Goals](#project-goals)
+- [Project Intentions & Planning](#project-intentions-&-planning)
 - [User Stories](#user-stories)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
@@ -23,6 +24,24 @@ To create a comprehensive fitness e-commerce platform that:
 - Implements secure payment processing
 - Maintains high performance standards
 - Follows accessibility best practices
+
+---
+
+## Project Intentions & Planning
+
+A detailed explanation of the **project goals, business model, and design choices** is documented in the following Google Doc:
+
+📄 [Fitnest E-Commerce Project Documentation](https://docs.google.com/document/d/1cNEtj40iuhMNrbCfl6m3x47SoImJv2XE/edit?usp=drive_link&ouid=116876224672419831524&rtpof=true&sd=true)
+
+This document outlines the core concept of the Fitnest project, including:
+
+- The business case and audience
+- Core features and user stories
+- Design decisions and layout wireframes
+- Technologies and services used
+
+It was created to support planning, testing, and assessment of the full-stack development process.
+
 
 ## User Stories
 ### Shopper Goals
