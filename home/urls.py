@@ -9,6 +9,8 @@ urlpatterns = [
     path("", views.index, name="home"),
     path('newsletter-signup/', views.newsletter_signup, name='newsletter_signup'),
     path('delete-comment/<int:comment_id>/', views.delete_comment, name='delete_comment'),
+    path('edit-comment/<int:comment_id>/', views.edit_comment, name='edit_comment'),
+
 
  # Override login and signup to redirect logged-in users
    path("accounts/login/", redirect_authenticated_user(LoginView), name="account_login"),

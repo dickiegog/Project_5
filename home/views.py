@@ -46,11 +46,30 @@ def index(request):
 @login_required
 def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
-    # Only allow admin users to delete
-    if request.user.is_staff:
+    # Allow the comment author or an admin to delete
+    if request.user == comment.user or request.user.is_staff:
         comment.delete()
         return redirect('home')  # Redirect to the homepage
     return HttpResponseForbidden("You are not allowed to delete this comment.")
+
+@login_required
+def edit_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    
+    if comment.user != request.user and not request.user.is_staff:
+        return HttpResponseForbidden("You are not allowed to edit this comment.")
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Comment updated successfully.")
+            return redirect('home')
+    else:
+        form = CommentForm(instance=comment)
+
+    return render(request, 'home/edit_comment.html', {'form': form, 'comment': comment})
+
 
 def robots_txt(request):
     lines = [

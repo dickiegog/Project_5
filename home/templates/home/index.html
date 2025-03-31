@@ -56,19 +56,17 @@
         <p><strong>Product:</strong> {{ comment.product.name }}</p>
         {% endif %}
         <p>{{ comment.content }}</p>
-        <!-- Delete button for admin users -->
-        {% if user.is_staff %}
-        <form
-          method="post"
-          action="{% url 'delete_comment' comment.id %}"
-          class="d-inline"
-        >
+        {% if comment.user == user or user.is_staff %}
+        <!-- Edit Button -->
+        <a href="{% url 'edit_comment' comment.id %}" class="btn btn-warning btn-sm mt-2">Edit</a>
+      
+        <!-- Delete Button -->
+        <form method="post" action="{% url 'delete_comment' comment.id %}" class="d-inline">
           {% csrf_token %}
-          <button type="submit" class="btn btn-danger btn-sm mt-2">
-            Delete
-          </button>
+          <button type="submit" class="btn btn-danger btn-sm mt-2">Delete</button>
         </form>
-        {% endif %}
+      {% endif %}
+      
       </div>
     </div>
     {% empty %}
