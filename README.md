@@ -1,8 +1,8 @@
 # Fitnest - Fitness E-Commerce Platform
 
-<a href="static/images/homeScreen.png" target="_blank">
-  <img src="static/images/homeScreen.png" alt="Fitnest Preview" />
-</a>
+![Fitnest Preview](static/images/homeScreen.png)
+
+> 💡 (Right-click or Ctrl+Click any link or image to open in a new tab.)
 
 ## Table of Contents
 - [Live Site](#live-site)
@@ -174,20 +174,21 @@ All 9 tests passed successfully, confirming the core logic is functioning as exp
 
 ### HTML Validation
 
-HTML was validated using <a href="https://validator.w3.org/" target="_blank">W3C Validator</a>. No critical issues were found.
+HTML was validated using [W3C Validator](https://validator.w3.org/). No critical issues were found.
 
-<a href="static/images/HTML_Validation_p5.png" target="_blank">
-  <img src="static/images/HTML_Validation_p5.png" alt="HTML Validation" />
-</a>
-
+![HTML Validation](static/images/HTML_Validation_p5.png)
 
 ### CSS Validation
 
-CSS was validated using <a href="https://jigsaw.w3.org/css-validator/" target="_blank">W3C CSS Validator</a>. No errors were detected.
+CSS was validated using [W3C CSS Validator](https://jigsaw.w3.org/css-validator/). No errors were detected.
 
-<a href="static/images/Css_validation_p5.png" target="_blank">
-  <img src="static/images/Css_validation_p5.png" alt="CSS Validation" />
-</a>
+![CSS Validation](static/images/Css_validation_p5.png)
+
+### JavaScript Testing
+
+- ✅ JSHint validation passed with no warnings or errors
+- ✅ No console errors
+- ✅ All interactive buttons and forms behave as expected
 
 ---
 
@@ -202,10 +203,7 @@ The site was tested across the following screen sizes:
 
 The design adapted fluidly at each breakpoint.
 
-
-<a href="static/images/responsiveP5.png" target="_blank">
-  <img src="static/images/responsiveP5.png" alt="Responsive Design" />
-</a>
+![Responsive Design](static/images/responsiveP5.png)
 
 ---
 
@@ -213,9 +211,7 @@ The design adapted fluidly at each breakpoint.
 
 Google Lighthouse was used to measure performance. The site scored well in all categories:
 
-<a href="static/images/Fitnest-Lighthouse.png" target="_blank">
-  <img src="static/images/Fitnest-Lighthouse.png" alt="Lighthouse Report" />
-</a>
+![Lighthouse Report](static/images/Fitnest-Lighthouse.png)
 
 | Metric         | Score |
 |----------------|-------|
@@ -289,17 +285,13 @@ Google Lighthouse was used to measure performance. The site scored well in all c
 ## Credits
 
 ### Media
-
-- Product images from <a href="https://unsplash.com" target="_blank">Unsplash</a>
-- Icons from <a href="https://fontawesome.com" target="_blank">Font Awesome</a>
-
----
+- Product images from [Unsplash](https://unsplash.com)
+- Icons from [Font Awesome](https://fontawesome.com)
 
 ### Code
-
 - Base template adapted from **Code Institute Boutique Ado**
-- Payment system based on <a href="https://stripe.com/docs" target="_blank">Stripe documentation</a>
-- <a href="https://django-allauth.readthedocs.io/en/latest/" target="_blank">Django AllAuth</a> for authentication
+- Payment system based on [Stripe documentation](https://stripe.com/docs)
+- [Django AllAuth](https://django-allauth.readthedocs.io/en/latest/) for authentication
 
 ### Acknowledgements
 - Code Institute tutors and mentors  
