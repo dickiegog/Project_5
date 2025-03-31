@@ -1,6 +1,6 @@
 # Fitnest - Fitness E-Commerce Platform
 
-![Fitnest Preview](static/images/Fitnest-Lighthouse.png)
+![Fitnest Preview](static/images/homeScreen.png)
 
 ## Table of Contents
 - [Live Site](#live-site)
