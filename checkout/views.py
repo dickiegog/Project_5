@@ -29,6 +29,7 @@ def checkout(request):
     # Pre-fill form with profile data
     initial_data = {
         'full_name': f"{request.user.first_name} {request.user.last_name}",
+        'email': request.user.email, 
         'address': profile.address,
         'city': profile.city,
         'postal_code': profile.postal_code,
