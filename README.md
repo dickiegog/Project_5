@@ -1,6 +1,8 @@
 # Fitnest - Fitness E-Commerce Platform
 
-![Fitnest Preview](static/images/homeScreen.png)
+<a href="static/images/homeScreen.png" target="_blank">
+  <img src="static/images/homeScreen.png" alt="Fitnest Preview" />
+</a>
 
 ## Table of Contents
 - [Live Site](#live-site)
@@ -15,7 +17,7 @@
 - [Acknowledgements](#acknowledgements)
 
 ## Live Site
-[https://richards-pp5-8caee8658402.herokuapp.com/](https://richards-pp5-8caee8658402.herokuapp.com/)
+🌐 <a href="https://richards-pp5-8caee8658402.herokuapp.com/" target="_blank">Live Site: Fitnest</a>
 
 ## Project Goals
 To create a comprehensive fitness e-commerce platform that:
@@ -31,7 +33,7 @@ To create a comprehensive fitness e-commerce platform that:
 
 A detailed explanation of the **project goals, business model, and design choices** is documented in the following Google Doc:
 
-📄 [Fitnest E-Commerce Project Documentation](https://docs.google.com/document/d/1cNEtj40iuhMNrbCfl6m3x47SoImJv2XE/edit?usp=drive_link&ouid=116876224672419831524&rtpof=true&sd=true)
+📄 <a href="https://docs.google.com/document/d/1cNEtj40iuhMNrbCfl6m3x47SoImJv2XE/edit?usp=drive_link&ouid=116876224672419831524&rtpof=true&sd=true" target="_blank">Fitnest E-Commerce Project Documentation</a>
 
 This document outlines the core concept of the Fitnest project, including:
 
@@ -140,35 +142,19 @@ It was created to support planning, testing, and assessment of the full-stack de
 
 ## Automated Testing
 
-Unit tests were written in `tests.py` files across various apps to validate core logic.
+Unit tests were written in `tests.py` to validate model integrity, views, and key application functionality.
 
-### Example Test here
-
-
-
-
-### Test Execution
-
-Tests were run using the following command:
+Django's built-in test runner was used to execute the tests:
 
 ```bash
 python manage.py test
 ```
 
-All 9 tests passed successfully.
+All 9 tests passed successfully, confirming the core logic is functioning as expected.
 
-![Automated Tests](static/images/Automated%20testing.png)
-
-### Test Coverage Summary
-
-| Component | Coverage |
-|-----------|----------|
-| Models    | 85%      |
-| Views     | 70%      |
-| Forms     | 75%      |
-| URLs      | 90%      |
-
----
+<a href="static/images/Automated%20testing.png" target="_blank">
+  <img src="static/images/Automated%20testing.png" alt="Automated Tests" />
+</a>
 
 ## Manual Testing
 
@@ -188,21 +174,20 @@ All 9 tests passed successfully.
 
 ### HTML Validation
 
-HTML was validated using [W3C Validator](https://validator.w3.org/). No critical issues were found.
+HTML was validated using <a href="https://validator.w3.org/" target="_blank">W3C Validator</a>. No critical issues were found.
 
-![HTML Validation](static/images/HTML_Validation_p5.png)
+<a href="static/images/HTML_Validation_p5.png" target="_blank">
+  <img src="static/images/HTML_Validation_p5.png" alt="HTML Validation" />
+</a>
+
 
 ### CSS Validation
 
-CSS was validated using [W3C CSS Validator](https://jigsaw.w3.org/css-validator/). No errors were detected.
+CSS was validated using <a href="https://jigsaw.w3.org/css-validator/" target="_blank">W3C CSS Validator</a>. No errors were detected.
 
-![CSS Validation](static/images/Css_validation_p5.png)
-
-### JavaScript Testing
-
-- ✅ JSHint validation passed with no warnings or errors
-- ✅ No console errors
-- ✅ All interactive buttons and forms behave as expected
+<a href="static/images/Css_validation_p5.png" target="_blank">
+  <img src="static/images/Css_validation_p5.png" alt="CSS Validation" />
+</a>
 
 ---
 
@@ -217,7 +202,10 @@ The site was tested across the following screen sizes:
 
 The design adapted fluidly at each breakpoint.
 
-![Responsive Design](static/images/responsiveP5.png)
+
+<a href="static/images/responsiveP5.png" target="_blank">
+  <img src="static/images/responsiveP5.png" alt="Responsive Design" />
+</a>
 
 ---
 
@@ -225,7 +213,9 @@ The design adapted fluidly at each breakpoint.
 
 Google Lighthouse was used to measure performance. The site scored well in all categories:
 
-![Lighthouse Report](static/images/Fitnest-Lighthouse.png)
+<a href="static/images/Fitnest-Lighthouse.png" target="_blank">
+  <img src="static/images/Fitnest-Lighthouse.png" alt="Lighthouse Report" />
+</a>
 
 | Metric         | Score |
 |----------------|-------|
@@ -299,13 +289,17 @@ Google Lighthouse was used to measure performance. The site scored well in all c
 ## Credits
 
 ### Media
-- Product images from [Unsplash](https://unsplash.com)
-- Icons from [Font Awesome](https://fontawesome.com)
+
+- Product images from <a href="https://unsplash.com" target="_blank">Unsplash</a>
+- Icons from <a href="https://fontawesome.com" target="_blank">Font Awesome</a>
+
+---
 
 ### Code
+
 - Base template adapted from **Code Institute Boutique Ado**
-- Payment system based on [Stripe documentation](https://stripe.com/docs)
-- [Django AllAuth](https://django-allauth.readthedocs.io/en/latest/) for authentication
+- Payment system based on <a href="https://stripe.com/docs" target="_blank">Stripe documentation</a>
+- <a href="https://django-allauth.readthedocs.io/en/latest/" target="_blank">Django AllAuth</a> for authentication
 
 ### Acknowledgements
 - Code Institute tutors and mentors  
