@@ -1,54 +1,48 @@
-{% extends "base.html" %} {% load static %} {% block content %}
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
 <div class="container">
   <h1 class="mt-4">Edit Profile</h1>
 
-  <!-- Profile Card -->
-  <div class="card my-4">
-    <div class="row no-gutters">
-      <div class="col-md-4 text-center py-4">
-        {% if user.userprofile.profile_picture %}
-        <!-- Display uploaded profile picture -->
-        <img
-          src="{{ user.userprofile.profile_picture.url }}"
-          class="img-fluid rounded-circle"
-          loading="lazy"
-          alt="Profile Picture"
-          style="max-width: 150px"
-        />
-        {% else %}
-        <!-- Display fallback default image -->
-        <img
-          src="{% static 'images/no-image.jpeg' %}"
-          class="img-fluid rounded-circle"
-          loading="lazy"
-          alt="Default Profile Picture"
-          style="max-width: 150px"
-        />
+  <!-- Profile Edit Card with Form -->
+  <form method="POST" enctype="multipart/form-data" class="mt-3">
+    {% csrf_token %}
+    <div class="card my-4">
+      <div class="row no-gutters">
+        <!-- Left Column -->
+        <div class="col-md-4 text-center py-4">
+          {% if user.userprofile.profile_picture %}
+            <img
+              src="{{ user.userprofile.profile_picture.url }}"
+              class="img-fluid rounded-circle mb-2"
+              loading="lazy"
+              alt="Profile Picture"
+              style="max-width: 150px"
+            />
+          {% else %}
+            <img
+              src="{% static 'images/no-image.jpeg' %}"
+              class="img-fluid rounded-circle mb-2"
+              loading="lazy"
+              alt="Default Profile Picture"
+              style="max-width: 150px"
+            />
+          {% endif %}
 
-        {% endif %}
-        <h5 class="mt-3">{{ user.username }}</h5>
-        <div class="form-group">
-          <label for="id_profile_picture">Profile Picture</label>
-          <input
-            type="file"
-            name="profile_picture"
-            id="id_profile_picture"
-            class="form-control"
-          />
+          <div class="form-group mt-3 px-3">
+            {{ profile_form.profile_picture.label_tag }}
+            {{ profile_form.profile_picture }}
+          </div>
+
+          <h5 class="mt-3">{{ user.username }}</h5>
         </div>
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Personal Information</h5>
-          <form method="POST" enctype="multipart/form-data" class="mt-3">
-            {% csrf_token %}
-          
-            <!-- Profile Picture Upload -->
-            <div class="form-group">
-              <label for="id_profile_picture">Profile Picture</label>
-              {{ profile_form.profile_picture }}
-            </div>
-          
+
+        <!-- Right Column -->
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Personal Information</h5>
+
             <!-- User Fields -->
             <div class="form-group">
               {{ user_form.first_name.label_tag }}
@@ -62,7 +56,7 @@
               {{ user_form.email.label_tag }}
               {{ user_form.email }}
             </div>
-          
+
             <!-- Profile Fields -->
             <div class="form-group">
               {{ profile_form.bio.label_tag }}
@@ -88,20 +82,17 @@
               {{ profile_form.phone_number.label_tag }}
               {{ profile_form.phone_number }}
             </div>
-          
+
             <button type="submit" class="btn btn-success mt-2">Save Changes</button>
-          </form>
-          
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
 
   <!-- Additional Links -->
   <div class="mt-4">
-    <a href="{% url 'account_change_password' %}" class="btn btn-primary"
-      >Change Password</a
-    >
+    <a href="{% url 'account_change_password' %}" class="btn btn-primary">Change Password</a>
     <a href="{% url 'account_logout' %}" class="btn btn-danger">Logout</a>
   </div>
 </div>
