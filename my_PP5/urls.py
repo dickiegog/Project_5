@@ -30,6 +30,7 @@ urlpatterns = [
     path('', include('home.urls')),
     path('cart/', include('cart.urls', namespace='cart')),
     path('checkout/', include('checkout.urls')),
+    path('contact/', include('contact.urls')),
     path('sitemap.xml', sitemap_view, name='sitemap'),
 ]
 
