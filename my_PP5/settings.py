@@ -19,10 +19,10 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['richards-pp5.herokuapp.com']
+ALLOWED_HOSTS = ['richards-pp5-8caee8658402.herokuapp.com']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://richards-pp5.herokuapp.com'
+    'https://richards-pp5-8caee8658402.herokuapp.com'
 ]
 
 
