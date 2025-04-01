@@ -125,7 +125,7 @@ The following ER diagram illustrates the relationships between models in the pro
   - Add/remove items
   - Quantity adjustment
   - Persistent cart between sessions
-  - Order summary
+  - Order summary, maintained, even after logout
 
 - **Checkout Process**
   - Secure Stripe payments (needs to be changed to )
