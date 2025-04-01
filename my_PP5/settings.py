@@ -19,11 +19,11 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['richards-pp5.herokuapp.com', 'https://richards-pp5-8caee8658402.herokuapp.com','localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['richards-pp5.herokuapp.com', 'https://richards-pp5-8caee8658402.herokuapp.com','localhost', '127.0.0.1','*']
 
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://richards-pp5.herokuapp.com', 'https://richards-pp5-8caee8658402.herokuapp.com',
+    'https://richards-pp5.herokuapp.com', 'https://richards-pp5-8caee8658402.herokuapp.com', '*'
 ]
 
 MEDIA_URL = '/media/'
