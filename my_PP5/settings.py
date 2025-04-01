@@ -23,7 +23,7 @@ STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 SECRET_KEY = 'django-insecure-b0sswm1sar4xj$+lnv%#q3jm^y8b=w@#(#(*69%68x*%&5n+ru'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -195,5 +195,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 cloudinary.config( 
   cloud_name = os.getenv('CLOUDINARY_CLOUD_NAME'), 
   api_key = os.getenv('CLOUDINARY_API_KEY'), 
-  api_secret = os.getenv('CLOUDINARY_API_SECRET')
+  api_secret = os.getenv('CLOUDINARY_API_SECRET'),
+  secure = True
 )
