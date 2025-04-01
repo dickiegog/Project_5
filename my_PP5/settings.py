@@ -19,10 +19,11 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['richards-pp5.herokuapp.com', 'localhost', '127.0.0.1']
+
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-dickiegog-project5-me0kiijp3x6.ws-eu118.gitpod.io',
+    'https://richards-pp5.herokuapp.com',
 ]
 
 MEDIA_URL = '/media/'
