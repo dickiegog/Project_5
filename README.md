@@ -94,6 +94,15 @@ Initial planning included hand-drawn wireframes for the homepage and product pag
   <img src="static/images/products_page.jpg" alt="Product Page Wireframe" width="400"/>
 </a>
 
+## 🧩 Data Schema – Entity Relationship Diagram (ERD)
+
+The following ER diagram illustrates the relationships between models in the project:
+
+<a href="static/images/er-diagram.png" target="_blank">
+  <img src="static/images/er-diagram.png" alt="Entity Relationship Diagram" width="600"/>
+</a>
+
+
 > 💡 Right-click or Ctrl+Click any image to open in a new tab.
 
 
