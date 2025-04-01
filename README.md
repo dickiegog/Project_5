@@ -119,7 +119,7 @@ Initial planning included hand-drawn wireframes for the homepage and product pag
   - Order summary
 
 - **Checkout Process**
-  - Secure Stripe payments
+  - Secure Stripe payments (needs to be changed to )
   - Order confirmation
   - Receipt generation
 
@@ -129,11 +129,12 @@ Initial planning included hand-drawn wireframes for the homepage and product pag
   - User rating system
 
 ### Future Features
-- Advanced product filtering
-- Wishlist functionality
-- Product ratings and reviews
+- View previous purchases (left in repo as an issue)
+- Wishlist functionality 
 - Enhanced admin dashboard
 - Loyalty program integration
+- VAT breakdown
+
 
 ## Technologies Used
 
@@ -214,7 +215,6 @@ CSS was validated using [W3C CSS Validator](https://jigsaw.w3.org/css-validator/
 
 ### JavaScript Testing
 
-- ✅ JSHint validation passed with no warnings or errors
 - ✅ No console errors
 - ✅ All interactive buttons and forms behave as expected
 
