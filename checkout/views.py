@@ -78,8 +78,17 @@ def checkout(request):
 @login_required
 def success(request):
     """
-    Display the order success page and handle missing profile data.
+    Display the order success page, clear the cart, and show a success message.
     """
+    # Clear the cart (session-based and model-based)
+    if 'cart' in request.session:
+        del request.session['cart']
+    # Also clear CartItem objects for this user (if using model-based cart)
+    CartItem.objects.filter(cart__user=request.user).delete()
+
+    # Show a success message
+    messages.success(request, "Payment successful! Thank you for your order.")
+
     missing_profile_data = request.session.pop('missing_profile_data', {})
 
     # Check if there are missing fields
