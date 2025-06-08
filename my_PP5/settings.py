@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'comments', 
     'cloudinary',
     'cloudinary_storage',
+    'newsletter',
 ]
 
 MIDDLEWARE = [

@@ -113,12 +113,12 @@
       <div class="card-body">
         <h5 class="card-title">Subscribe to Our Newsletter</h5>
         <form method="POST" action="{% url 'newsletter_signup' %}">
-          {% csrf_token %}
-          <div class="form-group">
-            {{ newsletter_form.email.label_tag }} 
-            {{ newsletter_form.email }}
-          </div>
-          <button type="submit" class="btn btn-primary">Subscribe</button>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_email">Email Address <span class="asterisk">*</span></label>
+                <input type="email" name="email" class="form-control" id="id_email" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
         </form>
       </div>
     </div>

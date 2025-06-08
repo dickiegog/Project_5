@@ -32,6 +32,7 @@ urlpatterns = [
     path('checkout/', include('checkout.urls')),
     path('contact/', include('contact.urls')),
     path('sitemap.xml', sitemap_view, name='sitemap'),
+    path('newsletter/', include('newsletter.urls')),
 ]
 
 
