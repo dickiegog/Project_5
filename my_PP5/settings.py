@@ -17,7 +17,7 @@ STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['richards-pp5-8caee8658402.herokuapp.com', 'localhost', '127.0.0.1']
 

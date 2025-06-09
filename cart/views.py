@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.models import AnonymousUser
 
 @login_required
 def add_to_cart(request, product_id):
@@ -23,6 +24,7 @@ def add_to_cart(request, product_id):
     cart_item.save()
     return redirect('cart:cart_detail')
 
+@login_required
 def cart_detail(request):
     """View to display the cart details."""
     cart, _ = Cart.objects.get_or_create(user=request.user)
