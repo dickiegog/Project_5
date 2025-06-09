@@ -129,10 +129,9 @@ The following ER diagram illustrates the relationships between models in the pro
   - Order summary, maintained, even after logout
 
 - **Checkout Process**
-  - Secure Stripe payments (test and live keys supported)
-  - Orders are saved at the point of Stripe session creation
-  - Order status is updated to "Paid" after successful payment
-  - Order confirmation and receipt page after payment
+  - Secure Stripe payments (needs to be changed to )
+  - Order confirmation
+  - Receipt generation
 
 - **Community Interaction**
   - Product-specific comments
@@ -195,25 +194,33 @@ Django's built-in test runner was used to execute the tests:
 python manage.py test
 ```
 
-All 9 tests passed successfully, confirming the core logic is functioning as expected.
+All 15 tests passed successfully, confirming the core logic is functioning as expected.
 
-<a href="static/images/Automated%20testing.png" target="_blank">
-  <img src="static/images/Automated%20testing.png" alt="Automated Tests" />
+<a href="staticfiles/images/Automated_testing.png" target="_blank">
+  <img src="staticfiles/images/Automated_testing.png" alt="Automated Tests" />
 </a>
 
-## Manual Testing
+### Manual Testing
 
-### Feature-by-Feature Tests
+Manual testing was performed for all major features, including:
+- User registration, login, and profile editing
+- Adding/removing items from cart
+- Checkout and Stripe payment flow
+- Order history and order detail navigation
+- Responsive design on desktop and mobile
 
-| Feature         | Test Case           | Result  |
-|----------------|---------------------|---------|
-| Registration   | New user signup     | ✅ Pass |
-| Login          | Existing user login | ✅ Pass |
-| Product Search | Keyword matching    | ✅ Pass |
-| Cart           | Add/remove items    | ✅ Pass |
-| Checkout       | Complete purchase   | ✅ Pass |
+#### Manual Testing Table
 
----
+| Feature         | Steps Taken                                   | Expected Outcome           | Actual Outcome           |
+|-----------------|-----------------------------------------------|----------------------------|--------------------------|
+| Add to Cart     | Click "Add to Cart" on product page           | Item appears in cart       | Works as expected        |
+| Checkout        | Fill form, proceed to Stripe, pay             | Order saved, payment works | Works as expected        |
+| Order History   | Visit profile > order history                 | Orders listed              | Works as expected        |
+| Order Details   | Click "View" on order history                 | Order detail page loads    | Works as expected        |
+| Edit Profile    | Change address, save                          | Address updated            | Works as expected        |
+| Navigation      | Use "Back to Shop" and "Back to Order History"| Navigation works           | Works as expected        |
+| Responsive      | Resize browser/device                         | Layout adapts correctly    | Works as expected        |
+
 
 ## Validation Testing
 
@@ -345,11 +352,3 @@ Google Lighthouse was used to measure performance. The site scored well in all c
 ---
 
 **License**: This project is developed for educational purposes as part of Code Institute's Full Stack Developer program.
-
-## Usage
-
-1. Add products to your cart.
-2. Go to checkout, fill out the form, and click "Proceed to Payment".
-3. Complete payment via Stripe.
-4. After payment, view your order confirmation.
-5. Access your order history and details from your profile at any time.
