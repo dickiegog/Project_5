@@ -374,3 +374,8 @@ Google Lighthouse was used to measure performance. The site scored well in all c
 ---
 
 **License**: This project is developed for educational purposes as part of Code Institute's Full Stack Developer program.
+
+### Known Issues
+
+- **Country Flag Image 404:**  
+  Just before submission, a 404 error for a missing Ireland flag image (`/static/flags/ie.gif`) began appearing on the profile edit page. This does not affect site functionality or user experience, and there was not enough time to fully resolve it before submission.
