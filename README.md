@@ -218,8 +218,15 @@ Manual testing was performed for all major features, including:
 | Order History   | Visit profile > order history                 | Orders listed              | Works as expected        |
 | Order Details   | Click "View" on order history                 | Order detail page loads    | Works as expected        |
 | Edit Profile    | Change address, save                          | Address updated            | Works as expected        |
+| Password Change    | Change password via profile/settings                    | Password updated, user notified         | Works as expected        |
+| Logout             | Click logout button                                     | User is logged out, redirected to home  | Works as expected        |
+| Home Button        | Click "Home" button/logo                                | User is taken to homepage               | Works as expected        |
 | Navigation      | Use "Back to Shop" and "Back to Order History"| Navigation works           | Works as expected        |
 | Responsive      | Resize browser/device                         | Layout adapts correctly    | Works as expected        |
+| Contact Us      | Submit contact form with valid details        | Message saved/sent, user sees confirmation | Works as expected        |
+| Newsletter Signup | Enter email and submit on newsletter form   | Email saved in backend, user sees confirmation | Works as expected        |
+| Stripe Payment    | Use Stripe test card (e.g. 4242 4242 4242 4242) at checkout      | Payment succeeds, order marked as paid  | Works as expected        |
+
 
 
 ## Validation Testing
