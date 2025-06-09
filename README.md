@@ -129,9 +129,10 @@ The following ER diagram illustrates the relationships between models in the pro
   - Order summary, maintained, even after logout
 
 - **Checkout Process**
-  - Secure Stripe payments (needs to be changed to )
-  - Order confirmation
-  - Receipt generation
+  - Secure Stripe payments (test and live keys supported)
+  - Orders are saved at the point of Stripe session creation
+  - Order status is updated to "Paid" after successful payment
+  - Order confirmation and receipt page after payment
 
 - **Community Interaction**
   - Product-specific comments
@@ -344,3 +345,11 @@ Google Lighthouse was used to measure performance. The site scored well in all c
 ---
 
 **License**: This project is developed for educational purposes as part of Code Institute's Full Stack Developer program.
+
+## Usage
+
+1. Add products to your cart.
+2. Go to checkout, fill out the form, and click "Proceed to Payment".
+3. Complete payment via Stripe.
+4. After payment, view your order confirmation.
+5. Access your order history and details from your profile at any time.

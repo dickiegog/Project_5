@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<a href="{% url 'profiles:order_history' %}" class="btn btn-secondary mb-3">
+  &larr; Back to Order History
+</a>
+<h2>Order #{{ order.id }}</h2>
+<p>Status: {{ order.get_status_display }}</p>
+<ul>
+  {% for item in order.orderitem_set.all %}
+    <li>{{ item.product.name }} ({{ item.quantity }}) - ${{ item.price }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

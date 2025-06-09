@@ -5,5 +5,6 @@ app_name = 'profiles'
 
 urlpatterns = [
     path('edit/', views.edit_profile, name='edit_profile'),
-    path('save_profile_data/', views.save_profile_data, name='save_profile_data'),
+    path('orders/', views.order_history, name='order_history'),
+    path('orders/<int:order_id>/', views.order_detail, name='order_detail'),  # <-- Add this line
 ]

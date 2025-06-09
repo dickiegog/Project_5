@@ -2,8 +2,9 @@
 <div class="container">
   <h1 class="mt-4">Checkout</h1>
   <form id="checkout-form">
-    {% csrf_token %} {{ form.as_p }}
-    <button id="submit-button" type="button" class="btn btn-primary">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button id="submit-button" type="submit" class="btn btn-primary">
       Proceed to Payment
     </button>
   </form>
@@ -88,37 +89,33 @@
 {% endif %} {% endblock %} {% block postloadjs %}
 <script src="https://js.stripe.com/v3/" defer></script>
 <script>
-  document.getElementById("submit-button").addEventListener("click", async function () {
-    const stripe = Stripe("{{ stripe_public_key }}");
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("checkout-form");
+    if (!form) return;
 
-    try {
-      // Fetch session ID from the backend
-      const response = await fetch("{% url 'checkout:create_checkout_session' %}", {
-        method: "POST",
-        headers: {
-          "X-CSRFToken": "{{ csrf_token }}",
-          "Content-Type": "application/json",
-        },
-      });
+    form.addEventListener("submit", async function(e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const data = {};
+        formData.forEach((value, key) => { data[key] = value; });
 
-      const session = await response.json();
-
-      if (session.error) {
-        alert("Error: " + session.error);
-        return;
-      }
-
-      // Redirect to Stripe Checkout
-      const result = await stripe.redirectToCheckout({ sessionId: session.id });
-
-      if (result.error) {
-        alert("Stripe Error: " + result.error.message);
-      }
-    } catch (error) {
-      console.error("Unexpected Error:", error);
-      alert("An unexpected error occurred. Please try again.");
-    }
-  });
+        const response = await fetch("{% url 'checkout:create_checkout_session' %}", {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": "{{ csrf_token }}",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+        const session = await response.json();
+        if (session.id) {
+            const stripe = Stripe("{{ stripe_public_key }}");
+            stripe.redirectToCheckout({ sessionId: session.id });
+        } else {
+            alert(session.error || "Unknown error");
+        }
+    });
+});
 </script>
 
 {% endblock %}

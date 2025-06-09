@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import UserProfileForm, UserUpdateForm
 from .models import UserProfile
 from django.contrib import messages
+from checkout.models import Order
 
 @login_required
 def edit_profile(request):
@@ -47,3 +48,13 @@ def save_profile_data(request):
         return redirect('profiles:edit_profile')
 
     return redirect('profiles:edit_profile')
+
+@login_required
+def order_detail(request, order_id):
+    order = get_object_or_404(Order, id=order_id, user=request.user)
+    return render(request, 'profiles/order_detail.html', {'order': order})
+
+@login_required
+def order_history(request):
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')
+    return render(request, 'profiles/order_history.html', {'orders': orders})

@@ -1,4 +1,5 @@
 import stripe
+import json
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -11,14 +12,10 @@ from .models import Order, OrderItem
 from cart.models import CartItem
 from profiles.models import UserProfile
 
-print(f"DEBUG: Using Stripe Secret Key: {settings.STRIPE_SECRET_KEY}") 
-
 stripe.api_key = settings.STRIPE_SECRET_KEY
-
 
 @login_required
 def checkout(request):
-    """Render the checkout page and handle form submission."""
     cart_items = CartItem.objects.filter(cart__user=request.user)
     if not cart_items:
         messages.info(request, "Your cart is empty. Add items before checking out.")
@@ -36,62 +33,22 @@ def checkout(request):
         'phone_number': profile.phone_number,
         'country': profile.country
     }
-
-    if request.method == 'POST':
-        form = CheckoutForm(request.POST)
-        if form.is_valid():
-            order = form.save(commit=False)
-            order.user = request.user
-            order.total = sum(item.product.price * item.quantity for item in cart_items)
-            order.save()
-
-            # Save order items
-            for item in cart_items:
-                OrderItem.objects.create(
-                    order=order,
-                    product=item.product,
-                    quantity=item.quantity,
-                    price=item.product.price,
-                )
-
-            # Clear the cart
-            cart_items.delete()
-
-            # Redirect to Stripe Checkout session
-            return render(request, 'checkout/checkout.html', {
-                'form': form,
-                'cart_items': cart_items,
-                'stripe_public_key': settings.STRIPE_PUBLIC_KEY,  # Pass Stripe public key
-            })
-
-        else:
-            messages.error(request, "There was an issue with your checkout form. Please try again.")
-    else:
-        form = CheckoutForm(initial=initial_data)
-
+    form = CheckoutForm(initial=initial_data)
     return render(request, 'checkout/checkout.html', {
         'form': form,
         'cart_items': cart_items,
-        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,  # Pass Stripe public key
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
     })
 
 @login_required
 def success(request):
-    """
-    Display the order success page, clear the cart, and show a success message.
-    """
-    # Clear the cart (session-based and model-based)
     if 'cart' in request.session:
         del request.session['cart']
-    # Also clear CartItem objects for this user (if using model-based cart)
     CartItem.objects.filter(cart__user=request.user).delete()
 
-    # Show a success message
     messages.success(request, "Payment successful! Thank you for your order.")
 
     missing_profile_data = request.session.pop('missing_profile_data', {})
-
-    # Check if there are missing fields
     missing_fields = [
         field for field in ['address', 'city', 'postal_code', 'phone_number', 'country']
         if field not in missing_profile_data
@@ -108,7 +65,6 @@ def save_profile_data(request):
     if request.method == 'POST':
         profile, created = UserProfile.objects.get_or_create(user=request.user)
 
-        # Update only missing fields
         profile.address = request.POST.get('address') or profile.address
         profile.city = request.POST.get('city') or profile.city
         profile.postal_code = request.POST.get('postal_code') or profile.postal_code
@@ -123,36 +79,62 @@ def save_profile_data(request):
 @csrf_exempt
 @login_required
 def create_checkout_session(request):
-    """Create a Stripe Checkout session dynamically."""
-    try:
-        cart_items = CartItem.objects.filter(cart__user=request.user)
-        if not cart_items:
-            return JsonResponse({'error': 'Your cart is empty!'}, status=400)
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            cart_items = CartItem.objects.filter(cart__user=request.user)
+            if not cart_items:
+                return JsonResponse({'error': 'Your cart is empty!'}, status=400)
 
-        line_items = [
-            {
-                'price_data': {
-                    'currency': 'usd',
-                    'product_data': {'name': item.product.name},
-                    'unit_amount': int(item.product.price * 100),  # Stripe expects cents
-                },
-                'quantity': item.quantity,
-            }
-            for item in cart_items
-        ]
+            order = Order.objects.create(
+                user=request.user,
+                full_name=data.get('full_name'),
+                email=data.get('email'),
+                address=data.get('address'),
+                city=data.get('city'),
+                postal_code=data.get('postal_code'),
+                phone=data.get('phone_number'),
+                country=data.get('country'),
+                total=sum(item.product.price * item.quantity for item in cart_items),
+                status='pending'
+            )
 
-        # Dynamically get your domain (important for deployment)
-        YOUR_DOMAIN = f"{request.scheme}://{request.get_host()}"
-        success_url = YOUR_DOMAIN + reverse('checkout:success')  # Use Django reverse
-        cancel_url = YOUR_DOMAIN + reverse('checkout:checkout')
+            for item in cart_items:
+                OrderItem.objects.create(
+                    order=order,
+                    product=item.product,
+                    quantity=item.quantity,
+                    price=item.product.price,
+                )
 
-        checkout_session = stripe.checkout.Session.create(
-            payment_method_types=["card"],
-            line_items=line_items,
-            mode="payment",
-            success_url=success_url,
-            cancel_url=cancel_url,
-        )
-        return JsonResponse({"id": checkout_session.id})
-    except Exception as e:
-        return JsonResponse({"error": str(e)}, status=500)
+            line_items = [
+                {
+                    'price_data': {
+                        'currency': 'usd',
+                        'product_data': {'name': item.product.name},
+                        'unit_amount': int(item.product.price * 100),
+                    },
+                    'quantity': item.quantity,
+                }
+                for item in cart_items
+            ]
+
+            cart_items.delete()  # Move this AFTER building line_items
+            request.session['order_id'] = order.id
+
+            YOUR_DOMAIN = f"{request.scheme}://{request.get_host()}"
+            success_url = YOUR_DOMAIN + reverse('checkout:success')
+            cancel_url = YOUR_DOMAIN + reverse('checkout:checkout')
+
+            checkout_session = stripe.checkout.Session.create(
+                payment_method_types=["card"],
+                line_items=line_items,
+                mode="payment",
+                success_url=success_url,
+                cancel_url=cancel_url,
+            )
+            return JsonResponse({"id": checkout_session.id})
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+    else:
+        return JsonResponse({'error': 'Invalid request'}, status=400)
