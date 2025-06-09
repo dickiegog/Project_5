@@ -35,6 +35,9 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.product.name} x {self.quantity}"
+    
+    def subtotal(self):
+        return self.price * self.quantity
 
 @login_required
 def order_history(request):
