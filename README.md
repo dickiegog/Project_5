@@ -11,6 +11,7 @@
 - [User Stories](#user-stories)
 - [Agile Development & Wireframes](#agile-development)
 - [Features](#features)
+- [Facebook Business Page](#facebook-business-page)
 - [Technologies Used](#technologies-used)
 - [Testing](#testing)
 - [Deployment](#deployment)
@@ -144,6 +145,11 @@ The following ER diagram illustrates the relationships between models in the pro
 - Loyalty program integration
 - VAT breakdown
 
+## Facebook Business Page
+
+Below is a mockup of the bespoke Facebook business page for this project:
+
+![Facebook Business Page Mockup](static/images/FB-Fitnest.png)
 
 ## Technologies Used
 
