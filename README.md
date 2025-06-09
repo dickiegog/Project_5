@@ -238,7 +238,19 @@ HTML was validated using [W3C Validator](https://validator.w3.org/).
 Every page was tested both by entering its live URL and by uploading the source code file to the validator.  
 Only minor warnings were found, with no critical issues.
 
-![HTML Validation](static/images/HTML_Validation_p5.png)
+#### Example Validation Screenshots
+
+![Home Page HTML Validation](static/images/w3c_home.png)
+*Home page validated with W3C Validator*
+
+![Product Page HTML Validation](static/images/w3c_products.png)
+*Product page validated with W3C Validator*
+
+![Cart Page HTML Validation](static/images/w3c_cart.png)
+*Cart page validated with W3C Validator*
+
+![Profile Page HTML Validation](static/images/w3c_profile.png)
+*Checkout page validated with W3C Validator*
 
 ### CSS Validation
 
