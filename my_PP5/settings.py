@@ -194,5 +194,3 @@ cloudinary.config(
   api_secret = os.getenv('CLOUDINARY_API_SECRET'),
   secure = True
 )
-
-COUNTRIES_FLAG_URL = None
