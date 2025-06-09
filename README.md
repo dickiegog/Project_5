@@ -226,14 +226,17 @@ Manual testing was performed for all major features, including:
 | Contact Us      | Submit contact form with valid details        | Message saved/sent, user sees confirmation | Works as expected        |
 | Newsletter Signup | Enter email and submit on newsletter form   | Email saved in backend, user sees confirmation | Works as expected        |
 | Stripe Payment    | Use Stripe test card (e.g. 4242 4242 4242 4242) at checkout      | Payment succeeds, order marked as paid  | Works as expected        |
+| Visit Facebook Page | Click "Visit our Facebook page" button    | Opens a mock Facebook page in a new tab | Works as expected        |
 
-
+...
 
 ## Validation Testing
 
 ### HTML Validation
 
-HTML was validated using [W3C Validator](https://validator.w3.org/). No critical issues were found.
+HTML was validated using [W3C Validator](https://validator.w3.org/).  
+Every page was tested both by entering its live URL and by uploading the source code file to the validator.  
+Only minor warnings were found, with no critical issues.
 
 ![HTML Validation](static/images/HTML_Validation_p5.png)
 
@@ -260,10 +263,10 @@ The site was tested across the following screen sizes:
 - Desktop (1080p monitor)
 
 The design adapted fluidly at each breakpoint.
+- Laptop (MacBook Air)
+- Desktop (1080p monitor)
 
-![Responsive Design](static/images/responsiveP5.png)
-
----
+The design adapted fluidly at each breakpoint.
 
 ## Performance Testing
 
